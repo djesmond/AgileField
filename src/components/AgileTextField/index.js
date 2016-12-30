@@ -26,7 +26,9 @@ class AgileTextField extends Component {
     return (
       <div style={[this.props.style.fieldContainer, this.props.style.fieldText]}>
         <p style={this.props.style.fieldLabel}>{this.props.label}</p>
-        <p style={this.props.style.fieldHintText}>{this.props.hintText}</p>
+        {this.props.hintText.length > 0 &&
+          <p style={this.props.style.fieldHintText}>{this.props.hintText}</p>
+        }
           <input style={[this.props.style.fieldInput.base, this.props.style.fieldInput[this.state.state]]}
             type={this.props.type}
             value={this.state.value}
@@ -54,11 +56,11 @@ const defaultStyle = {
     lineHeight: 1,
   },
   fieldLabel: {
-    margin: 0,
     fontSize: '14px',
+    margin: '0px 0px 4px 0px',
   },
   fieldHintText: {
-    margin: '4px 0px 4px 0px',
+    margin: '0px 0px 4px 0px',
     fontSize: '12px',
     color: '#7a7a7a',
   },
@@ -135,6 +137,7 @@ AgileTextField.propTypes = {
 AgileTextField.defaultProps = {
   type: 'text',
   label: 'label',
+  hintText: '',
   validator: defaultValidator,
   validateInput: false,
   style: defaultStyle,

@@ -15,7 +15,6 @@ class App extends Component {
         <AgileTextField
           type="text"
           label="Name"
-          hintText="Enter your full name"
           validateInput={true}
         />
       </div>

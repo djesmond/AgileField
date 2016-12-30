@@ -1,48 +1,7 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
+import _ from 'lodash/object';
 
-class AgileTextField extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      state: 'base',
-      value: '',
-      isValid: true,
-      message: '',
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleValidate = this.handleValidate.bind(this);
-  }
-  handleInputChange(event) {
-    this.setState({value: event.target.value});
-  }
-  handleValidate() {
-    //The validator returns an object representing the state
-    var result = this.props.validator(this.state.value);
-    console.log(result);
-    this.setState(result);
-  }
-  render() {
-    return (
-      <div style={[this.props.style.fieldContainer, this.props.style.fieldText]}>
-        <p style={this.props.style.fieldLabel}>{this.props.label}</p>
-        {this.props.hintText.length > 0 &&
-          <p style={this.props.style.fieldHintText}>{this.props.hintText}</p>
-        }
-          <input style={[this.props.style.fieldInput.base, this.props.style.fieldInput[this.state.state]]}
-            type={this.props.type}
-            value={this.state.value}
-            onChange={this.handleInputChange}
-            onBlur={this.props.validateInput ? this.handleValidate : ''}/>
-
-
-          <p style={[this.props.style.fieldMessage.base, this.props.style.fieldMessage[this.state.state]]}>
-            {this.state.message}
-          </p>
-      </div>
-    );
-  }
-}
 //Default style used as defualt prop
 const defaultStyle = {
   fieldContainer: {
@@ -74,6 +33,9 @@ const defaultStyle = {
       ':focus': {
         border: '1px solid #494949',
         outline: 0,
+      },
+      ':disabled': {
+        backgroundColor: '#f7f7f7',
       }
     },
     valid: {
@@ -106,6 +68,56 @@ const defaultStyle = {
   }
 };
 
+class AgileTextField extends Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props.style);
+    //Overwrite defaultStyle if custom has been provided, Without removing untouched defaultStyles
+    //Creates a new object based on the defaultStyle and the custom style from prop
+    var styles = this.props.style ? _.merge({},defaultStyle, this.props.style) : defaultStyle;
+    this.state = {
+      state: 'base',
+      value: '',
+      isValid: true,
+      message: '',
+      style: styles
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleValidate = this.handleValidate.bind(this);
+  }
+  handleInputChange(event) {
+    this.setState({value: event.target.value});
+  }
+  handleValidate() {
+    //The validator returns an object representing the state
+    var result = this.props.validator(this.state.value);
+    console.log(result);
+    this.setState(result);
+  }
+  render() {
+    return (
+      <div style={[this.state.style.fieldContainer, this.state.style.fieldText]}>
+        <p style={this.state.style.fieldLabel}>{this.props.label}</p>
+        {this.props.hintText.length > 0 &&
+          <p style={this.state.style.fieldHintText}>{this.props.hintText}</p>
+        }
+          <input style={[this.state.style.fieldInput.base, this.state.style.fieldInput[this.state.state]]}
+            type={this.props.type}
+            value={this.state.value}
+            onChange={this.handleInputChange}
+            onBlur={this.props.validateInput ? this.handleValidate : ''}
+            disabled={this.props.disabled}
+            />
+
+
+          <p style={[this.state.style.fieldMessage.base, this.state.style.fieldMessage[this.state.state]]}>
+            {this.state.message}
+          </p>
+      </div>
+    );
+  }
+}
+
 //Default validator
 function defaultValidator(input) {
   if(input.length > 0) {
@@ -132,6 +144,7 @@ AgileTextField.propTypes = {
   validator: React.PropTypes.func,
   validateInput: React.PropTypes.bool,
   style: React.PropTypes.object,
+  disabled: React.PropTypes.bool,
 }
 // Specifies the default values for props:
 AgileTextField.defaultProps = {
@@ -140,7 +153,7 @@ AgileTextField.defaultProps = {
   hintText: '',
   validator: defaultValidator,
   validateInput: false,
-  style: defaultStyle,
+  disabled: false,
 };
 
 export default Radium(AgileTextField);

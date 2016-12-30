@@ -8,11 +8,13 @@ class App extends Component {
     return (
       <div className="App">
         <AgileTextField
+          type="text"
           label="Email"
           hintText="Example: johndoe@email.com"
           invalidMessage="Not a valid Email"
         />
         <AgileTextField
+          type="text"
           label="Name"
           hintText="Enter your full name"
           invalidMessage="Not a valid name"

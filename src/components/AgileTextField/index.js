@@ -81,10 +81,10 @@ class AgileTextField extends Component {
         <p style={defaultStyle.fieldLabel}>{this.props.label}</p>
         <p style={defaultStyle.fieldHintText}>{this.props.hintText}</p>
         {this.state.isValid &&
-          <input style={defaultStyle.fieldInput} type="text" value={this.state.value} onChange={this.handleInputChange} onBlur={this.handleValidate}/>
+          <input style={defaultStyle.fieldInput} type={this.props.type} value={this.state.value} onChange={this.handleInputChange} onBlur={this.handleValidate}/>
         }
         {!this.state.isValid &&
-          <input style={[defaultStyle.fieldInput, defaultStyle.fieldInputInvalid]} type="text" value={this.state.value} onChange={this.handleInputChange} onBlur={this.handleValidate}/>
+          <input style={[defaultStyle.fieldInput, defaultStyle.fieldInputInvalid]} type={this.props.type} value={this.state.value} onChange={this.handleInputChange} onBlur={this.handleValidate}/>
         }
         {this.state.isValid &&
           <p style={defaultStyle.fieldInvalidMessage}></p>
@@ -96,10 +96,18 @@ class AgileTextField extends Component {
     );
   }
 }
+
+//Specifies the propTypes
 AgileTextField.propTypes = {
+  type: React.PropTypes.oneOf(['text', 'email', 'password']).isRequired,
   label: React.PropTypes.string.isRequired,
   hintText: React.PropTypes.string,
   invalidMessage: React.PropTypes.string
 }
+// Specifies the default values for props:
+AgileTextField.defaultProps = {
+  type: 'text',
+  label: 'label',
+};
 
 export default Radium(AgileTextField);

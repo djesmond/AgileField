@@ -1,6 +1,5 @@
 # AgileField
 Simple input fields for react.
-![fields](./docs/images/fieldsAll.png)
 
 # Usage
 AF comes preconfigured with som standard behavior.

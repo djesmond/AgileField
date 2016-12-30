@@ -9,7 +9,7 @@ The minimal syntax looks like this.
 <AgileField type="text" label="Field" />
 
 ```
-![fieldNoHint](https://github.com/djesmond/agileField/tree/develop/docs/images/fieldNoHint.png)
+![fieldNoHint](./docs/images/fieldNoHint.png)
 
 AF field translate to `<input>` along side some other html.
 `Type` and `label` are the only required props to generate a field.

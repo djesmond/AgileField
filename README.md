@@ -1,5 +1,6 @@
 # AgileField
-Simple input fields for react
+Simple input fields for react.
+![fields](./docs/images/fieldsAll.png)
 
 # Usage
 AF comes preconfigured with som standard behavior.
@@ -9,7 +10,6 @@ The minimal syntax looks like this.
 <AgileField type="text" label="Field" />
 
 ```
-![fieldNoHint](./docs/images/fieldNoHint.png)
 
 AF field translate to `<input>` along side some other html.
 `Type` and `label` are the only required props to generate a field.

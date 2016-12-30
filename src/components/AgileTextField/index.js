@@ -103,6 +103,7 @@ class AgileTextField extends Component {
         }
           <input style={[this.state.style.fieldInput.base, this.state.style.fieldInput[this.state.state]]}
             type={this.props.type}
+            name={this.props.name}
             value={this.state.value}
             onChange={this.handleInputChange}
             onBlur={this.props.validateInput ? this.handleValidate : ''}

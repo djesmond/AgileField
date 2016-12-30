@@ -7,7 +7,7 @@ const defaultStyle = {
   fieldContainer: {
     width: '300px',
     minHeight: '90px',
-    margin: '8px',
+    margin: '8px 0px',
   },
   fieldText: {
     textAlign: 'left',
@@ -109,7 +109,6 @@ class AgileTextField extends Component {
             onBlur={this.props.validateInput ? this.handleValidate : ''}
             disabled={this.props.disabled}
             />
-
 
           <p style={[this.state.style.fieldMessage.base, this.state.style.fieldMessage[this.state.state]]}>
             {this.state.message}

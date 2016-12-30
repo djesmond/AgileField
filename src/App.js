@@ -16,6 +16,7 @@ class App extends Component {
           type="text"
           label="Name"
           hintText="Enter your full name"
+          validateInput={true}
         />
       </div>
     );

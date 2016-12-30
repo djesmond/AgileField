@@ -31,7 +31,8 @@ class AgileTextField extends Component {
             type={this.props.type}
             value={this.state.value}
             onChange={this.handleInputChange}
-            onBlur={this.handleValidate}/>
+            onBlur={this.props.validateInput ? this.handleValidate : ''}/>
+
 
           <p style={[this.props.style.fieldMessage.base, this.props.style.fieldMessage[this.state.state]]}>
             {this.state.message}
@@ -127,6 +128,7 @@ AgileTextField.propTypes = {
   label: React.PropTypes.string.isRequired,
   hintText: React.PropTypes.string,
   validator: React.PropTypes.func,
+  validateInput: React.PropTypes.bool,
   style: React.PropTypes.object,
 }
 // Specifies the default values for props:
@@ -134,6 +136,7 @@ AgileTextField.defaultProps = {
   type: 'text',
   label: 'label',
   validator: defaultValidator,
+  validateInput: false,
   style: defaultStyle,
 };
 

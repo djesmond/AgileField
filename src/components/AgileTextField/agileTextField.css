@@ -1,0 +1,46 @@
+/*  */
+.field-container {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* General text position and behaviour */
+.field-text-position {
+  text-align: left;
+  font-family: sans-serif;
+  line-height: 1;
+}
+
+/* */
+.field-label {
+  margin: 0;
+  font-size: 14px;
+}
+
+.field-hintText {
+  margin: 0;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color:#7a7a7a;
+}
+
+.field-input {
+  border: 1px solid #c3c3c3;
+  border-radius: 3px;
+  padding: 8px;
+  font-size: 16px;
+
+}
+.field-input:focus {
+  border: 1px solid #494949;
+  outline: 0;
+}
+.field-invalidMessage {
+  margin: 0;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: #c70000;
+}

@@ -11,13 +11,11 @@ class App extends Component {
           type="text"
           label="Email"
           hintText="Example: johndoe@email.com"
-          invalidMessage="Not a valid Email"
         />
         <AgileTextField
           type="text"
           label="Name"
           hintText="Enter your full name"
-          invalidMessage="Not a valid name"
         />
       </div>
     );

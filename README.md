@@ -2,7 +2,7 @@
 Simple input fields for react.
 
 # Usage
-AF comes preconfigured with som standard behavior.
+AF comes preconfigured with some standard behavior.
 AF is a [controlled](https://facebook.github.io/react/docs/forms.html#controlled-components) React component internally
 The minimal syntax looks like this.
 ```jsx
@@ -48,10 +48,10 @@ To enable validation use the validateInput prop.
 />
 
 ```
-AF ships with a simple and not that usefull validator, which can be used for testing.
+AF ships with a simple and not that useful validator, which can be used for testing.
 Each field is validated when the user leaves the field [see](https://facebook.github.io/react/docs/events.html#focus-events)
 
-Internally, AF has a state, which specifices how the component should render.
+Internally, AF has a state, which specifies how the component should render.
 The state is changed by the validator which returns an object:
 ```javascript
 return {
@@ -65,7 +65,7 @@ return {
 ```
 All validators must return this object.
 This allows for a field to have more than just a simple true or false state.
-You can write custom validators, that can provide richier feedback to the user.
+You can write custom validators, that can provide richer feedback to the user.
 ```javascript
 function validator(input) {
   if(input.length === 0) {
@@ -115,7 +115,7 @@ AF comes with some default styling. This can be overwritten using the `style` pr
 
 ```
 Which is translated to inline styling.
-Note: The custom style is merged with the default style internally. This means it perserves default styling for everything that isn't overwritten.
+Note: The custom style is merged with the default style internally. This means it preserves default styling for everything that isn't overwritten.
 
 The styling points are:
 * `fieldContainer`: Styling for the container (div).

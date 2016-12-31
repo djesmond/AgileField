@@ -89,9 +89,9 @@ function validator(input) {
   }
 }
 ```
-The default styles support `state: 'valid'` and `state: 'invalid'`
+The default styles support `state: 'base'`, `state: 'valid'` and `state: 'invalid'`
 
-You can provide your validator using the pro `validator`
+You can provide your validator using the prop `validator`
 ```jsx
 <AgileField
   type="text"
@@ -118,19 +118,20 @@ Which is translated to inline styling.
 Note: The custom style is merged with the default style internally. This means it perserves default styling for everything that isn't overwritten.
 
 The styling points are:
-`fieldContainer`: Styling for the container (div).
-`fieldText`: Styling for all text inside the container. Use this for fonts etc.
-`fieldLabel`: Style the label (Header) of the field.
-`fieldHintText`: Style the hint text.
-`fieldInput`: Styling for the html input.
-`fieldMessage`: Styling for the message below the input.
+* `fieldContainer`: Styling for the container (div).
+* `fieldText`: Styling for all text inside the container. Use this for fonts etc.
+* `fieldLabel`: Style the label (Header) of the field.
+* `fieldHintText`: Style the hint text.
+* `fieldInput`: Styling for the html input.
+* `fieldMessage`: Styling for the message below the input.
 
 All of these support states from your validators. You can add as many as you want.
 By default the all contain 3 states:
-`base`: This is the initial render of the component.
-`invalid`: Style when the provided input is not valid based on the validator.
-`valid`: Style when the input is valid based on the validator.
+* `base`: This is the initial render of the component.
+* `invalid`: Style when the provided input is not valid based on the validator.
+* `valid`: Style when the input is valid based on the validator.
+
 Note that fields with no validation(default) never change state from `base`.
 
-### A note on :focus, :hover :disabled etc
+### A note on `:focus`, `:hover` `:disabled` etc
 AF use [Radium](http://formidable.com/open-source/radium/) for styling. This allows you to style `:hover`. Please check their documentation for more information.

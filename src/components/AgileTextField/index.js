@@ -129,7 +129,7 @@ function defaultValidator(input) {
   }else if (input.length === 0) {
     return {
       isValid: false,
-      message: 'Not a valid string',
+      message: 'Empty string not allowed string',
       state: 'invalid',
     }
   }

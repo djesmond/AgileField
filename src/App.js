@@ -7,20 +7,20 @@ function customValidator(input) {
   if(input.length > 6) {
     return {
       isValid: false,
-      message: 'Must be less than 6 characters',
+      feedbackMessage: 'Must be less than 6 characters',
       state: 'invalid'
     }
   }else if (input.length === 0) {
     return {
       isValid: false,
-      message: 'That\'s too boring!',
+      feedbackMessage: 'That\'s too boring!',
       state: 'invalid'
     }
   }
   else if(input.length > 0 && input.length < 6) {
     return {
       isValid: true,
-      message: '',
+      feedbackMessage: '',
       state: 'valid'
     }
   }

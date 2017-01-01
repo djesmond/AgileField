@@ -137,7 +137,7 @@ function defaultValidator(input) {
 
 //Specifies the propTypes
 AgileTextField.propTypes = {
-  type: React.PropTypes.oneOf(['text', 'email', 'password']).isRequired,
+  type: React.PropTypes.oneOf(['text', 'email', 'password']),
   name: React.PropTypes.string,
   label: React.PropTypes.string.isRequired,
   hintText: React.PropTypes.string,
@@ -149,7 +149,6 @@ AgileTextField.propTypes = {
 // Specifies the default values for props:
 AgileTextField.defaultProps = {
   type: 'text',
-  label: 'label',
   hintText: '',
   validator: defaultValidator,
   validateInput: false,

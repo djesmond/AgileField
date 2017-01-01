@@ -6,12 +6,12 @@ AF comes preconfigured with some standard behavior.
 AF is a [controlled](https://facebook.github.io/react/docs/forms.html#controlled-components) React component internally
 The minimal syntax looks like this.
 ```jsx
-<AgileField type="text" label="Field" />
+<AgileField label="Field" />
 
 ```
 
 AF field translate to `<input>` along side some other html.
-`Type` and `label` are the only required props to generate a field.
+`label` is the only required props to generate a field.
 The above field will render:
 ```html
 <div>
@@ -20,6 +20,10 @@ The above field will render:
 </div>
 
 ```
+Inputs default to `type="text"` if the `type` prop isn't set.
+`type` supports: `text`, `email` and `password`.
+For more see: [html inputs] (https://developer.mozilla.org/en/docs/Web/HTML/Element/input).
+Note that only a few types are supported.
 Styling is done inline.
 
 The fields come with additional functionality
@@ -41,7 +45,6 @@ Validation is disabled by default.
 To enable validation use the validateInput prop.
 ```jsx
 <AgileField
-  type="text"
   hintText="Hello"
   label="Field"
   validateInput={true}
@@ -94,7 +97,6 @@ The default styles support `state: 'base'`, `state: 'valid'` and `state: 'invali
 You can provide your validator using the prop `validator`
 ```jsx
 <AgileField
-  type="text"
   hintText="Lets validate your input"
   label="Validation field"
   validateInput={true}
@@ -107,7 +109,6 @@ You can provide your validator using the prop `validator`
 AF comes with some default styling. This can be overwritten using the `style` prop
 ```jsx
 <AgileField
-  type="text"
   hintText="Hello"
   label="Field"
   style={styles}
@@ -123,7 +124,7 @@ The styling points are:
 * `fieldLabel`: Style the label (Header) of the field.
 * `fieldHintText`: Style the hint text.
 * `fieldInput`: Styling for the html input.
-* `fieldMessage`: Styling for the message below the input.
+* `fieldFeedback`: Styling for the feedback message below the input.
 
 All of these support states from your validators. You can add as many as you want.
 By default the all contain 3 states:

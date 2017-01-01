@@ -53,7 +53,7 @@ const defaultStyle = {
       }
     }
   },
-  fieldMessage: {
+  fieldFeedback: {
     base: {
       margin: '4px 0px 4px 0px',
       fontSize: '12px',
@@ -79,7 +79,7 @@ class AgileTextField extends Component {
       state: 'base',
       value: '',
       isValid: true,
-      message: '',
+      feedbackMessage: '',
       style: styles
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -110,8 +110,8 @@ class AgileTextField extends Component {
             disabled={this.props.disabled}
             />
 
-          <p style={[this.state.style.fieldMessage.base, this.state.style.fieldMessage[this.state.state]]}>
-            {this.state.message}
+          <p style={[this.state.style.fieldFeedback.base, this.state.style.fieldFeedback[this.state.state]]}>
+            {this.state.feedbackMessage}
           </p>
       </div>
     );
@@ -123,13 +123,13 @@ function defaultValidator(input) {
   if(input.length > 0) {
     return {
       isValid: true,
-      message: '',
+      feedbackMessage: '',
       state: 'valid',
     }
   }else if (input.length === 0) {
     return {
       isValid: false,
-      message: 'Empty string not allowed string',
+      feedbackMessage: 'Empty string not allowed string',
       state: 'invalid',
     }
   }

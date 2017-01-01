@@ -43,13 +43,11 @@ class App extends Component {
         <h1>Agile Text Fields</h1>
         <p>A simple input with a label and hintText</p>
         <AgileTextField
-          type="text"
           label="Name"
           hintText="Enter your full name"
         />
       <p>Without hint text</p>
           <AgileTextField
-            type="text"
             label="Name"
           />
       <p>One with validation</p>
@@ -61,7 +59,6 @@ class App extends Component {
         />
       <p>One with custom validation</p>
         <AgileTextField
-          type="text"
           label="Text"
           hintText="Explain your life with less than 6 characters"
           validateInput={true}
@@ -76,7 +73,6 @@ class App extends Component {
           />
         <p>Disabled</p>
         <AgileTextField
-          type="text"
           label="Add to account"
           hintText="How much money do you want?"
           disabled={true}

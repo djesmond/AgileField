@@ -85,12 +85,20 @@ class AgileTextField extends Component {
     this.handleValidate = this.handleValidate.bind(this);
   }
   handleInputChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({value: event.target.value}, () => {
+      //Call done inside callback
+      //Insures that the state has been updated before calling
+      this.props.onValueChange(this.state);
+    });
   }
   handleValidate() {
     //The validator returns an object representing the state
     var result = this.props.validator(this.state.value);
-    this.setState(result);
+    this.setState(result, () => {
+      //Call done inside callback
+      //Insures that the state has been updated before calling
+      this.props.onStateChange(this.state);
+    });
   }
   render() {
     return (
@@ -127,7 +135,7 @@ function defaultValidator(input) {
   }else if (input.length === 0) {
     return {
       isValid: false,
-      feedbackMessage: 'Empty string not allowed string',
+      feedbackMessage: 'Empty string not allowed',
       state: 'invalid',
     }
   }
@@ -141,6 +149,8 @@ AgileTextField.propTypes = {
   hintText: React.PropTypes.string,
   validator: React.PropTypes.func,
   validateInput: React.PropTypes.bool,
+  onStateChange: React.PropTypes.func,
+  onValueChange: React.PropTypes.func,
   style: React.PropTypes.object,
   disabled: React.PropTypes.bool,
 }
@@ -150,6 +160,8 @@ AgileTextField.defaultProps = {
   hintText: '',
   validator: defaultValidator,
   validateInput: false,
+  onStateChange: (state) => {return state},
+  onValueChange: (state) => {return state},
   disabled: false,
 };
 

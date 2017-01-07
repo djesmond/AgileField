@@ -37,6 +37,14 @@ const customStyle = {
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+    this.handleValueChange = this.handleValueChange.bind(this);
+  }
+  handleValueChange(state) {
+    this.setState({value: state.value});
+  }
   render() {
     return (
       <div className="App">
@@ -64,6 +72,14 @@ class App extends Component {
           validateInput={true}
           validator={customValidator}
         />
+      <p>One with validation and value return when value changes</p>
+      <p>Value of input is: {this.state.value}</p>
+        <AgileTextField
+          label="Name"
+          hintText="Enter your full name"
+          validateInput={true}
+          onValueChange={this.handleValueChange}
+          />
       <p>One with custom style</p>
           <AgileTextField
             type="text"

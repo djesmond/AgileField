@@ -71,7 +71,6 @@ const defaultStyle = {
 class AgileTextField extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props.style);
     //Overwrite defaultStyle if custom has been provided, Without removing untouched defaultStyles
     //Creates a new object based on the defaultStyle and the custom style from prop
     var styles = this.props.style ? _.merge({},defaultStyle, this.props.style) : defaultStyle;
@@ -91,7 +90,6 @@ class AgileTextField extends Component {
   handleValidate() {
     //The validator returns an object representing the state
     var result = this.props.validator(this.state.value);
-    console.log(result);
     this.setState(result);
   }
   render() {

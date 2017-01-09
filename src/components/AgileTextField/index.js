@@ -67,7 +67,7 @@ const defaultStyle = {
     },
   }
 };
-const DefaultFeedbackElement = (state) => {
+function DefaultFeedbackElement(state) {
   return(
     <p style={[state.style.fieldFeedback.base, state.style.fieldFeedback[state.state]]}>
       {state.feedbackMessage}

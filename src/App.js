@@ -35,7 +35,7 @@ const customStyle = {
     }
   }
 }
-const CustomFeedbackElement = (state) => {
+function CustomFeedbackElement(state) {
   return (
     <p style={[state.style.fieldFeedback.base, state.style.fieldFeedback[state.state]]}>
       Message is: {state.feedbackMessage}

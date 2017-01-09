@@ -35,6 +35,13 @@ const customStyle = {
     }
   }
 }
+const CustomFeedbackElement = (state) => {
+  return (
+    <p style={[state.style.fieldFeedback.base, state.style.fieldFeedback[state.state]]}>
+      Message is: {state.feedbackMessage}
+    </p>
+  );
+};
 
 class App extends Component {
   constructor(props) {
@@ -81,11 +88,19 @@ class App extends Component {
           onValueChange={this.handleValueChange}
           />
       <p>One with custom style</p>
+        <AgileTextField
+          type="text"
+          label="Developer doing design"
+          hintText="Please don't tell the designers"
+          style={customStyle}
+        />
+      <p>One with custom feedbackElement</p>
           <AgileTextField
             type="text"
-            label="Developer doing design"
-            hintText="Please don't tell the designers"
-            style={customStyle}
+            label="Just a label"
+            hintText="Hello"
+            validateInput={true}
+            feedbackElement={CustomFeedbackElement}
           />
         <p>Disabled</p>
         <AgileTextField

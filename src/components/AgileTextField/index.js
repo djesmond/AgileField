@@ -67,6 +67,13 @@ const defaultStyle = {
     },
   }
 };
+const DefaultFeedbackElement = (state) => {
+  return(
+    <p style={[state.style.fieldFeedback.base, state.style.fieldFeedback[state.state]]}>
+      {state.feedbackMessage}
+    </p>
+  )
+};
 
 class AgileTextField extends Component {
   constructor(props) {
@@ -112,13 +119,10 @@ class AgileTextField extends Component {
             name={this.props.name}
             value={this.state.value}
             onChange={this.handleInputChange}
-            onBlur={this.props.validateInput ? this.handleValidate : ''}
+            onBlur={this.props.validateInput && this.handleValidate}
             disabled={this.props.disabled}
-            />
-
-          <p style={[this.state.style.fieldFeedback.base, this.state.style.fieldFeedback[this.state.state]]}>
-            {this.state.feedbackMessage}
-          </p>
+          />
+          {this.props.feedbackElement(this.state)}
       </div>
     );
   }
@@ -143,7 +147,7 @@ function defaultValidator(input) {
 
 //Specifies the propTypes
 AgileTextField.propTypes = {
-  type: React.PropTypes.oneOf(['text', 'email', 'password']),
+  type: React.PropTypes.oneOf(['text', 'password']),
   name: React.PropTypes.string,
   label: React.PropTypes.string.isRequired,
   hintText: React.PropTypes.string,
@@ -151,6 +155,7 @@ AgileTextField.propTypes = {
   validateInput: React.PropTypes.bool,
   onStateChange: React.PropTypes.func,
   onValueChange: React.PropTypes.func,
+  feedbackElement: React.PropTypes.func,
   style: React.PropTypes.object,
   disabled: React.PropTypes.bool,
 }
@@ -162,6 +167,7 @@ AgileTextField.defaultProps = {
   validateInput: false,
   onStateChange: (state) => {return state},
   onValueChange: (state) => {return state},
+  feedbackElement: DefaultFeedbackElement,
   disabled: false,
 };
 

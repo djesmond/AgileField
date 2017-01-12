@@ -95,6 +95,9 @@ class AgileTextField extends Component {
     this.setState({value: event.target.value}, () => {
       //Call done inside callback
       //Insures that the state has been updated before calling
+      if(this.props.validateOnChange) {
+        this.handleValidate();
+      }
       this.props.onValueChange(this.state);
     });
   }
@@ -153,18 +156,20 @@ AgileTextField.propTypes = {
   hintText: React.PropTypes.string,
   validator: React.PropTypes.func,
   validateInput: React.PropTypes.bool,
+  validateOnChange: React.PropTypes.bool,
   onStateChange: React.PropTypes.func,
   onValueChange: React.PropTypes.func,
   feedbackElement: React.PropTypes.func,
   style: React.PropTypes.object,
   disabled: React.PropTypes.bool,
-}
+};
 // Specifies the default values for props:
 AgileTextField.defaultProps = {
   type: 'text',
   hintText: '',
   validator: defaultValidator,
   validateInput: false,
+  validateOnChange: false,
   onStateChange: (state) => {return state},
   onValueChange: (state) => {return state},
   feedbackElement: DefaultFeedbackElement,

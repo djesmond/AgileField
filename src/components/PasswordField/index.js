@@ -41,19 +41,19 @@ const styles = {
 };
 
 function passswordValidator(input) {
-  if(input.length > 4 && input.length < 8) {
+  if(input.length >= 4 && input.length < 8) {
     return {
       isValid: true,
       feedbackMessage: 'Weak',
       state: 'weak'
     }
-  } else if(input.length > 8 && input.length < 16) {
+  } else if(input.length >= 8 && input.length < 16) {
     return {
       isValid: true,
       feedbackMessage: 'Passable',
       state: 'passable'
     }
-  } else if(input.length > 16) {
+  } else if(input.length >= 16) {
     return {
       isValid: true,
       feedbackMessage: 'Strong',
@@ -93,6 +93,7 @@ class PasswordField extends Component {
         validateInput={this.props.validateInput}
         style={styles}
         validator={this.props.validator}
+        validateOnChange={true}
         onStateChange={this.props.onStateChange}
         onValueChange={this.props.onValueChange}
         feedbackElement={this.props.feedbackElement}

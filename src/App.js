@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import AgileTextField from './components/AgileTextField';
+import PasswordField from './components/PasswordField';
 
 function customValidator(input) {
   if(input.length > 6) {
@@ -55,7 +56,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Agile Text Fields</h1>
+        <h1>Agile Fields</h1>
+        <div className="text">
+        <h2>Text</h2>
         <p>A simple input with a label and hintText</p>
         <AgileTextField
           label="Name"
@@ -94,7 +97,7 @@ class App extends Component {
           hintText="Please don't tell the designers"
           style={customStyle}
         />
-      <p>One with custom feedbackElement</p>
+      <p>One with custom feedback element</p>
           <AgileTextField
             type="text"
             label="Just a label"
@@ -108,6 +111,14 @@ class App extends Component {
           hintText="How much money do you want?"
           disabled={true}
           />
+        </div>
+          <div className="password">
+            <h2>Password</h2>
+            <PasswordField
+              label="Password"
+              hintText="Create a password"
+            />
+          </div>
       </div>
     );
   }

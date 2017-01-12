@@ -46,7 +46,7 @@ const defaultStyle = {
       }
     },
     invalid: {
-      border: '1px solid #c70000',
+      border: '1px solid #46c700',
       ':focus': {
         border: '1px solid #c70000',
         outline: 0,

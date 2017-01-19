@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AgileTextField from '../AgileTextField';
+import passswordValidator from '../Utils/Validators/password';
 
 const styles = {
   passIndicator: {
@@ -39,36 +40,6 @@ const styles = {
     float: 'right'
   }
 };
-
-function passswordValidator(input) {
-  if(input.length >= 4 && input.length < 8) {
-    return {
-      isValid: true,
-      feedbackMessage: 'Weak',
-      state: 'weak'
-    }
-  } else if(input.length >= 8 && input.length < 16) {
-    return {
-      isValid: true,
-      feedbackMessage: 'Passable',
-      state: 'passable'
-    }
-  } else if(input.length >= 16) {
-    return {
-      isValid: true,
-      feedbackMessage: 'Strong',
-      state: 'strong'
-    }
-  }
-  else {
-    return {
-      isValid: false,
-      feedbackMessage: 'Invalid',
-      state: 'base'
-    }
-  }
-};
-
 function PasswordStrength(state) {
   return(
     <div style={state.style.container}>

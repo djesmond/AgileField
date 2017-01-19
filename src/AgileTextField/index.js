@@ -19,6 +19,10 @@ const defaultStyle = {
     fontSize: '14px',
     margin: '0px 0px 4px 0px',
   },
+  fieldLabelOptional: {
+    color: '#7a7a7a',
+    fontStyle: 'italic'
+  },
   fieldHintText: {
     margin: '0px 0px 4px 0px',
     fontSize: '12px',
@@ -114,7 +118,12 @@ class AgileTextField extends Component {
   render() {
     return (
       <div style={[this.state.style.fieldContainer, this.state.style.fieldText]}>
-        <p style={this.state.style.fieldLabel}>{this.props.label}</p>
+        <p style={this.state.style.fieldLabel}>
+          {this.props.label}
+          {this.props.optional &&
+            <span style={this.state.style.fieldLabelOptional}> - Optional</span>
+          }
+        </p>
         {this.props.hintText.length > 0 &&
           <p style={this.state.style.fieldHintText}>{this.props.hintText}</p>
         }
@@ -137,6 +146,7 @@ AgileTextField.propTypes = {
   type: React.PropTypes.oneOf(['text', 'password']),
   name: React.PropTypes.string,
   label: React.PropTypes.string.isRequired,
+  optional: React.PropTypes.bool,
   hintText: React.PropTypes.string,
   validator: React.PropTypes.func,
   validateInput: React.PropTypes.bool,
@@ -150,6 +160,7 @@ AgileTextField.propTypes = {
 // Specifies the default values for props:
 AgileTextField.defaultProps = {
   type: 'text',
+  optional: false,
   hintText: '',
   validator: defaultValidator,
   validateInput: false,

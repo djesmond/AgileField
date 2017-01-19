@@ -64,9 +64,14 @@ class App extends Component {
           hintText="Enter your full name"
         />
       <p>Without hint text</p>
-          <AgileTextField
-            label="Name"
-          />
+        <AgileTextField
+          label="Name"
+        />
+      <p>Marked as optional</p>
+        <AgileTextField
+          label="Location"
+          optional={true}
+        />
       <p>One with validation</p>
         <AgileTextField
           type="text"

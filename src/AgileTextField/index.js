@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Radium from 'radium';
 import _ from 'lodash/object';
+import defaultValidator from '../Utils/Validators/default';
 
 //Default style used as defualt prop
 const defaultStyle = {
@@ -46,7 +47,7 @@ const defaultStyle = {
       }
     },
     invalid: {
-      border: '1px solid #46c700',
+      border: '1px solid #c70000',
       ':focus': {
         border: '1px solid #c70000',
         outline: 0,
@@ -128,23 +129,6 @@ class AgileTextField extends Component {
           {this.props.feedbackElement(this.state)}
       </div>
     );
-  }
-}
-
-//Default validator
-function defaultValidator(input) {
-  if(input.length > 0) {
-    return {
-      isValid: true,
-      feedbackMessage: '',
-      state: 'valid',
-    }
-  }else if (input.length === 0) {
-    return {
-      isValid: false,
-      feedbackMessage: 'Empty string not allowed',
-      state: 'invalid',
-    }
   }
 }
 

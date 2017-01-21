@@ -55,31 +55,21 @@ function PasswordStrength(state) {
 
 class PasswordField extends Component {
   render() {
+    const {...passThroughProps} = this.props;
     return (
       <AgileTextField
-        label={this.props.label}
-        hintText={this.props.hintText}
         type="password"
-        name={this.props.name}
-        validateInput={this.props.validateInput}
-        style={styles}
-        validator={this.props.validator}
         validateOnChange={true}
-        onStateChange={this.props.onStateChange}
-        onValueChange={this.props.onValueChange}
-        feedbackElement={this.props.feedbackElement}
-        disabled={this.props.disabled}
+        {...passThroughProps}
       />
     );
   }
 };
 PasswordField.propTypes = {
-  type: React.PropTypes.oneOf(['password']),
   name: React.PropTypes.string,
   label: React.PropTypes.string.isRequired,
   hintText: React.PropTypes.string,
   validator: React.PropTypes.func,
-  validateInput: React.PropTypes.bool,
   onStateChange: React.PropTypes.func,
   onValueChange: React.PropTypes.func,
   feedbackElement: React.PropTypes.func,
@@ -88,14 +78,13 @@ PasswordField.propTypes = {
 };
 // Specifies the default values for props:
 PasswordField.defaultProps = {
-  type: 'password',
   hintText: 'Enter password',
   name: 'password',
   validator: passswordValidator,
-  validateInput: true,
   onStateChange: (state) => {return state},
   onValueChange: (state) => {return state},
   feedbackElement: PasswordStrength,
+  style: styles,
   disabled: false,
 };
 export default PasswordField;

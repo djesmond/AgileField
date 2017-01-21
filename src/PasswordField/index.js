@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AgileTextField from '../AgileTextField';
 import passswordValidator from '../Utils/Validators/password';
+import PasswordStrengthElement from './PasswordFeedbackElement';
 
 const styles = {
   passIndicator: {
@@ -40,18 +41,6 @@ const styles = {
     float: 'right'
   }
 };
-function PasswordStrength(state) {
-  return(
-    <div style={state.style.container}>
-      <div style={state.style.textContainer}>
-        <p style={state.style.subheader}>
-          Strength: <span style={state.style.textRight}>{state.feedbackMessage}</span>
-        </p>
-      </div>
-      <div style={[state.style.passIndicator.base, state.style.passIndicator[state.state]]}></div>
-    </div>
-  )
-};
 
 class PasswordField extends Component {
   render() {
@@ -83,7 +72,7 @@ PasswordField.defaultProps = {
   validator: passswordValidator,
   onStateChange: (state) => {return state},
   onValueChange: (state) => {return state},
-  feedbackElement: PasswordStrength,
+  feedbackElement: PasswordStrengthElement,
   style: styles,
   disabled: false,
 };

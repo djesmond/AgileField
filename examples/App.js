@@ -116,13 +116,13 @@ class App extends Component {
           disabled={true}
           />
         </div>
-          <div className="password">
-            <h2>Password</h2>
-            <PasswordField
-              label="Password"
-              hintText="Create a password"
-            />
-          </div>
+        <div className="password">
+          <h2>Password</h2>
+          <PasswordField
+            label="Password"
+            hintText="Create a password"
+          />
+        </div>
       </div>
     );
   }

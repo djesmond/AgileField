@@ -118,6 +118,7 @@ class App extends Component {
         </div>
         <div className="password">
           <h2>Password</h2>
+          <p>Password creation with strength indicator</p>
           <PasswordField
             label="Password"
             hintText="Create a password"
@@ -125,8 +126,16 @@ class App extends Component {
         </div>
         <div className="number">
           <h2>Number</h2>
+          <p>Simple number input</p>
           <NumberField
             label="Number"
+          />
+          <p>One with min and max value</p>
+          <NumberField
+            label="Range"
+            hintText="Must be between 0 and 10"
+            minValue={0}
+            maxValue={10}
           />
         </div>
       </div>

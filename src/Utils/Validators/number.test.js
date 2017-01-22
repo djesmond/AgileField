@@ -1,5 +1,5 @@
 import numberValidator from './number';
-const values = [10, "foo", "20", 3.14, "3.14"];
+const values = [10, "foo", "20", 3.14, "3.14", -1, "-42"];
 const returnStateInvalid = {
   isValid: false,
   state: 'invalid'
@@ -10,10 +10,13 @@ const returnStateValid = {
 };
 describe('Validate Number', () => {
   it('should check if string is a number', () => {
-    expect(numberValidator(values[0])).toMatchObject(returnStateValid);
-    expect(numberValidator(values[1])).toMatchObject(returnStateInvalid);
-    expect(numberValidator(values[2])).toMatchObject(returnStateValid);
-    expect(numberValidator(values[3])).toMatchObject(returnStateValid);
-    expect(numberValidator(values[4])).toMatchObject(returnStateValid);
+    const validator = numberValidator(0, 100);
+    expect(validator(values[0])).toMatchObject(returnStateValid);
+    expect(validator(values[1])).toMatchObject(returnStateInvalid);
+    expect(validator(values[2])).toMatchObject(returnStateValid);
+    expect(validator(values[3])).toMatchObject(returnStateValid);
+    expect(validator(values[4])).toMatchObject(returnStateValid);
+    expect(validator(values[5])).toMatchObject(returnStateInvalid);
+    expect(validator(values[6])).toMatchObject(returnStateInvalid);
   });
 });

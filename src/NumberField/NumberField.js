@@ -7,11 +7,12 @@ const styles = {
 
 class NumberField extends Component {
   render() {
-    const {...passThroughProps} = this.props;
+    const {minValue, maxValue, ...passThroughProps} = this.props;
     return (
       <AgileTextField
         type="text"
         validateInput={true}
+        validator={numberValidator(minValue, maxValue)}
         {...passThroughProps}
       />
     );
@@ -26,11 +27,14 @@ NumberField.propTypes = {
   feedbackElement: React.PropTypes.func,
   style: React.PropTypes.object,
   disabled: React.PropTypes.bool,
+  minValue: React.PropTypes.number,
+  maxValue: React.PropTypes.number
 };
 // Specifies the default values for props:
 NumberField.defaultProps = {
   name: 'number',
-  validator: numberValidator,
   style: styles,
+  minValue: -Infinity,
+  maxValue: Infinity
 };
 export default NumberField;

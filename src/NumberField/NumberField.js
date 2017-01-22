@@ -31,9 +31,6 @@ NumberField.propTypes = {
 NumberField.defaultProps = {
   name: 'number',
   validator: numberValidator,
-  onStateChange: (state) => {return state},
-  onValueChange: (state) => {return state},
   style: styles,
-  disabled: false,
 };
 export default NumberField;

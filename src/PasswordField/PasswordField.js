@@ -67,13 +67,9 @@ PasswordField.propTypes = {
 };
 // Specifies the default values for props:
 PasswordField.defaultProps = {
-  hintText: 'Enter password',
   name: 'password',
   validator: passswordValidator,
-  onStateChange: (state) => {return state},
-  onValueChange: (state) => {return state},
   feedbackElement: PasswordStrengthElement,
   style: styles,
-  disabled: false,
 };
 export default PasswordField;

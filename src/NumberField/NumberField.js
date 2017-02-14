@@ -22,6 +22,7 @@ NumberField.propTypes = {
   name: React.PropTypes.string,
   label: React.PropTypes.string.isRequired,
   hintText: React.PropTypes.string,
+  optional: React.PropTypes.bool,
   onStateChange: React.PropTypes.func,
   onValueChange: React.PropTypes.func,
   feedbackElement: React.PropTypes.func,

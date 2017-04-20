@@ -22,7 +22,7 @@ The above field will render:
 ```
 Inputs default to `type="text"` if the `type` prop isn't set.
 `type` supports: `text` and `password`.
-For more see: [html inputs] (https://developer.mozilla.org/en/docs/Web/HTML/Element/input).
+For more see: [html inputs](https://developer.mozilla.org/en/docs/Web/HTML/Element/input).
 Note that only a few types are supported.
 Styling is done inline.
 

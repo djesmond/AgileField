@@ -1,5 +1,5 @@
 {
-  "name": "agileField",
+  "name": "agilefield",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -30,7 +30,7 @@
     "gzip-size": "3.0.0",
     "html-webpack-plugin": "2.26.0",
     "http-proxy-middleware": "0.17.3",
-    "jest": "18.1.0",
+    "jest": "20.0.3",
     "json-loader": "0.5.4",
     "object-assign": "4.1.1",
     "path-exists": "3.0.0",
@@ -44,13 +44,14 @@
     "webpack": "1.14.0",
     "webpack-dev-server": "1.16.2",
     "webpack-manifest-plugin": "1.1.0",
-    "whatwg-fetch": "2.0.2"
+    "whatwg-fetch": "2.0.3"
   },
   "dependencies": {
     "lodash": "^4.17.3",
+    "prop-types": "^15.5.10",
     "radium": "^0.18.1",
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "validate.js": "^0.11.1"
   },
   "scripts": {
@@ -66,7 +67,7 @@
       "<rootDir>/config/polyfills.js"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>[/\\\\](build|docs|node_modules)[/\\\\]"
+      "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",

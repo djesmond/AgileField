@@ -1,34 +1,46 @@
 # AgileField
-Simple input fields for react.
+Simple controlled inputs for react.
+AgileFields is an easy way to separate the presentational(stateless) component from the stateful input component.
 
 # Usage
-AF comes preconfigured with some standard behavior.
-AF is a [controlled](https://facebook.github.io/react/docs/forms.html#controlled-components) React component internally
-The minimal syntax looks like this.
+AgileField allows any component to be wrapped with a stateful component to handle [controlled](https://facebook.github.io/react/docs/forms.html#controlled-components) React inputs. 
+
+AgileField uses a High order component (HOC) to wrap a React class component around any other component, to give it access to value handling behind the scenes.
+
+An input can be created in a stateless component:
+
+```jsx
+const Input = (props) => {
+  return (
+    <p>Input</p>
+     <input value={props.state.value} onChange={props.onChange} />
+  )
+}
+//wrap it with state
+const controlledInput = bindState(Input);
+
+```
+`bindState` will expose props for controlling input. The most basic are the value and the change function. 
+
+
+## Included Fields
+AgileField includes some prebuilt inputs that are built using the `bindState` function.
+
+The minimal syntax looks like this for a text field.
 ```jsx
 <AgileField label="Field" />
 
 ```
-
-AF field translate to `<input>` along side some other html.
 `label` is the only required props to generate a field.
-The above field will render:
-```html
-<div>
-  <p>Field</p>
-  <input type="text">
-</div>
 
-```
 Inputs default to `type="text"` if the `type` prop isn't set.
 `type` supports: `text` and `password`.
-For more see: [html inputs](https://developer.mozilla.org/en/docs/Web/HTML/Element/input).
-Note that only a few types are supported.
-Styling is done inline.
+
+Styling is done inline, but you can use any method for your own components.
 
 The fields come with additional functionality
 
-## Hint text
+### Hint text
 You can provide a hint text for the input using the`hintText`prop.
 ```jsx
 <AgileField
@@ -66,7 +78,7 @@ return {
 }
 
 ```
-All validators must return this object.
+All validators is encouraged to return this object.
 This allows for a field to have more than just a simple true or false state.
 You can write custom validators, that can provide richer feedback to the user.
 ```javascript

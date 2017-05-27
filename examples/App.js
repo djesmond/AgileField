@@ -35,9 +35,24 @@ const customStyle = {
     }
   }
 }
+const CustomFeedbackStyle = {
+  fieldFeedback: {
+    base: {
+      margin: '4px 0px 4px 0px',
+      fontSize: '12px',
+      color: '#7a7a7a',
+    },
+    valid: {
+      color: '#009c19',
+    },
+    invalid: {
+      color: '#c70000',
+    },
+  }
+}
 function CustomFeedbackElement(state) {
   return (
-    <p style={[state.style.fieldFeedback.base, state.style.fieldFeedback[state.state]]}>
+    <p style={[CustomFeedbackStyle.fieldFeedback.base, CustomFeedbackStyle.fieldFeedback[state.state]]}> 
       Message is: {state.feedbackMessage}
     </p>
   );

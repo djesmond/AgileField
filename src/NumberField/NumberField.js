@@ -1,35 +1,21 @@
-import React, { Component } from 'react';
-import AgileTextField from '../AgileTextField';
+import React from 'react';
+
+import AgileTextField from '../AgileTextField/AgileTextField';
 import numberValidator from '../Utils/Validators/number';
 
-const styles = {
-};
-
-class NumberField extends Component {
-  render() {
-    const {minValue, maxValue, ...passThroughProps} = this.props;
-    return (
-      <AgileTextField
-        type="text"
-        validateInput={true}
-        validator={numberValidator(minValue, maxValue)}
-        {...passThroughProps}
-      />
-    );
-  }
-};
+/*
 NumberField.propTypes = {
-  name: React.PropTypes.string,
-  label: React.PropTypes.string.isRequired,
-  hintText: React.PropTypes.string,
-  optional: React.PropTypes.bool,
-  onStateChange: React.PropTypes.func,
-  onValueChange: React.PropTypes.func,
-  feedbackElement: React.PropTypes.func,
-  style: React.PropTypes.object,
-  disabled: React.PropTypes.bool,
-  minValue: React.PropTypes.number,
-  maxValue: React.PropTypes.number
+  name: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  hintText: PropTypes.string,
+  optional: PropTypes.bool,
+  onStateChange: PropTypes.func,
+  onValueChange: PropTypes.func,
+  feedbackElement: PropTypes.func,
+  style: PropTypes.object,
+  disabled: PropTypes.bool,
+  minValue: PropTypes.number,
+  maxValue: PropTypes.number
 };
 // Specifies the default values for props:
 NumberField.defaultProps = {
@@ -38,4 +24,21 @@ NumberField.defaultProps = {
   minValue: -Infinity,
   maxValue: Infinity
 };
+export default NumberField;
+*/
+const NumberField = (props) => {
+  const { minValue, maxValue, validator, feedbackElement, ...passThroughProps} = props;
+  const min = minValue ? minValue : -Infinity;
+  const max = maxValue ? maxValue : Infinity;
+  return (
+      <AgileTextField
+        type="text"
+        validateOnChange={true}
+        validator={validator ? validator : numberValidator(min, max)}
+        feedbackElement={feedbackElement ? feedbackElement : null}
+        {...passThroughProps}
+      />
+  )
+}
+
 export default NumberField;

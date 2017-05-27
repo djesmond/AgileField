@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Radium from 'radium';
 import _ from 'lodash/object';
-import defaultValidator from '../Utils/Validators/default';
+
+import bindState from '../bindState';
 import DefaultFeedbackElement from './DefaultFeedbackElement';
 
 //Default style used as defualt prop
@@ -74,6 +75,7 @@ const defaultStyle = {
   }
 };
 
+/*
 class AgileTextField extends Component {
   constructor(props) {
     super(props);
@@ -137,19 +139,19 @@ class AgileTextField extends Component {
 
 //Specifies the propTypes
 AgileTextField.propTypes = {
-  type: React.PropTypes.oneOf(['text', 'password']),
-  name: React.PropTypes.string,
-  label: React.PropTypes.string.isRequired,
-  optional: React.PropTypes.bool,
-  hintText: React.PropTypes.string,
-  validator: React.PropTypes.func,
-  validateInput: React.PropTypes.bool,
-  validateOnChange: React.PropTypes.bool,
-  onStateChange: React.PropTypes.func,
-  onValueChange: React.PropTypes.func,
-  feedbackElement: React.PropTypes.func,
-  style: React.PropTypes.object,
-  disabled: React.PropTypes.bool,
+  type: PropTypes.oneOf(['text', 'password']),
+  name: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  optional: PropTypes.bool,
+  hintText: PropTypes.string,
+  validator: PropTypes.func,
+  validateInput: PropTypes.bool,
+  validateOnChange: PropTypes.bool,
+  onStateChange: PropTypes.func,
+  onValueChange: PropTypes.func,
+  feedbackElement: PropTypes.func,
+  style: PropTypes.object,
+  disabled: PropTypes.bool,
 };
 // Specifies the default values for props:
 AgileTextField.defaultProps = {
@@ -164,5 +166,35 @@ AgileTextField.defaultProps = {
   feedbackElement: DefaultFeedbackElement,
   disabled: false,
 };
+*/
 
-export default Radium(AgileTextField);
+const Field = (props) => {
+  const style = props.style ? _.merge({},defaultStyle, props.style) : defaultStyle;
+  return (
+    <div style={[style.fieldContainer, style.fieldText]}>
+        <p style={style.fieldLabel}>
+          {props.label}
+          {props.optional &&
+            <span style={style.fieldLabelOptional}> - Optional</span>
+          }
+        </p>
+        {props.hintText.length > 0 &&
+          <p style={style.fieldHintText}>{props.hintText}</p>
+        }
+          <input style={[style.fieldInput.base, style.fieldInput[props.state.state]]}
+              type={props.type}
+              name={props.name}
+              value={props.state.value}
+              onChange={props.onChange}
+              onBlur={props.validateInput && props.handleValidate}
+              disabled={props.disabled}
+          />
+          {props.feedbackElement ? (
+              props.feedbackElement(props.state)) : DefaultFeedbackElement(props.state)}
+      </div>
+  )
+}
+
+
+
+export default bindState(Radium(Field));

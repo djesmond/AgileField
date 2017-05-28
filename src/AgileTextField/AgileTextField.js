@@ -1,9 +1,11 @@
 import React from 'react';
 import Radium from 'radium';
 import _ from 'lodash/object';
+import PropTypes from 'prop-types';
 
 import bindState from '../bindState';
 import DefaultFeedbackElement from './DefaultFeedbackElement';
+
 
 //Default style used as defualt prop
 const defaultStyle = {
@@ -75,70 +77,7 @@ const defaultStyle = {
   }
 };
 
-/*
-class AgileTextField extends Component {
-  constructor(props) {
-    super(props);
-    //Overwrite defaultStyle if custom has been provided, Without removing untouched defaultStyles
-    //Creates a new object based on the defaultStyle and the custom style from prop
-    var styles = this.props.style ? _.merge({},defaultStyle, this.props.style) : defaultStyle;
-    this.state = {
-      state: 'base',
-      value: '',
-      isValid: true,
-      feedbackMessage: '',
-      style: styles
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleValidate = this.handleValidate.bind(this);
-  }
-  handleInputChange(event) {
-    this.setState({value: event.target.value}, () => {
-      //Call done inside callback
-      //Insures that the state has been updated before calling
-      if(this.props.validateOnChange) {
-        this.handleValidate();
-      }
-      this.props.onValueChange(this.state);
-    });
-  }
-  handleValidate() {
-    //The validator returns an object representing the state
-    var result = this.props.validator(this.state.value);
-    this.setState(result, () => {
-      //Call done inside callback
-      //Insures that the state has been updated before calling
-      this.props.onStateChange(this.state);
-    });
-  }
-  render() {
-    return (
-      <div style={[this.state.style.fieldContainer, this.state.style.fieldText]}>
-        <p style={this.state.style.fieldLabel}>
-          {this.props.label}
-          {this.props.optional &&
-            <span style={this.state.style.fieldLabelOptional}> - Optional</span>
-          }
-        </p>
-        {this.props.hintText.length > 0 &&
-          <p style={this.state.style.fieldHintText}>{this.props.hintText}</p>
-        }
-          <input style={[this.state.style.fieldInput.base, this.state.style.fieldInput[this.state.state]]}
-            type={this.props.type}
-            name={this.props.name}
-            value={this.state.value}
-            onChange={this.handleInputChange}
-            onBlur={this.props.validateInput && this.handleValidate}
-            disabled={this.props.disabled}
-          />
-          {this.props.feedbackElement(this.state)}
-      </div>
-    );
-  }
-}
-
-//Specifies the propTypes
-AgileTextField.propTypes = {
+const AgileTextFieldPropTypes = {
   type: PropTypes.oneOf(['text', 'password']),
   name: PropTypes.string,
   label: PropTypes.string.isRequired,
@@ -149,24 +88,9 @@ AgileTextField.propTypes = {
   validateOnChange: PropTypes.bool,
   onStateChange: PropTypes.func,
   onValueChange: PropTypes.func,
-  feedbackElement: PropTypes.func,
   style: PropTypes.object,
   disabled: PropTypes.bool,
 };
-// Specifies the default values for props:
-AgileTextField.defaultProps = {
-  type: 'text',
-  optional: false,
-  hintText: '',
-  validator: defaultValidator,
-  validateInput: false,
-  validateOnChange: false,
-  onStateChange: (state) => {return state},
-  onValueChange: (state) => {return state},
-  feedbackElement: DefaultFeedbackElement,
-  disabled: false,
-};
-*/
 
 const Field = (props) => {
   const style = props.style ? _.merge({},defaultStyle, props.style) : defaultStyle;
@@ -194,7 +118,8 @@ const Field = (props) => {
       </div>
   )
 }
+Field.propTypes = AgileTextFieldPropTypes;
 
 
-
+export {AgileTextFieldPropTypes};
 export default bindState(Radium(Field));

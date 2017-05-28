@@ -89,7 +89,6 @@ class App extends Component {
           />
           <p>One with validation</p>
           <AgileTextField
-            type="text"
             label="Name"
             hintText="Enter your full name"
             validateInput={true}
@@ -111,14 +110,12 @@ class App extends Component {
           />
           <p>One with custom style</p>
           <AgileTextField
-            type="text"
             label="Developer doing design"
             hintText="Please don't tell the designers"
             style={customStyle}
           />
           <p>One with custom feedback element</p>
           <AgileTextField
-            type="text"
             label="Just a label"
             hintText="Hello"
             validateInput={true}

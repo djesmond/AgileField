@@ -16,10 +16,10 @@ const style = {
   }
 }
 
-function DefaultFeedbackElement(state) {
+function DefaultFeedbackElement({state, feedbackMessage}) {
   return(
-    <p style={[style.fieldFeedback.base, style.fieldFeedback[state.state]]}>
-      {state.feedbackMessage}
+    <p style={[style.fieldFeedback.base, style.fieldFeedback[state]]}>
+      {feedbackMessage}
     </p>
   )
 };

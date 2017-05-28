@@ -39,15 +39,15 @@ const styles = {
   }
 };
 
-function PasswordStrength(state) {
+function PasswordStrength({state, feedbackMessage}) {
   return(
     <div style={styles.container}>
       <div style={styles.textContainer}>
         <p style={styles.subheader}>
-          Strength: <span style={styles.textRight}>{state.feedbackMessage}</span>
+          Strength: <span style={styles.textRight}>{feedbackMessage}</span>
         </p>
       </div>
-      <div style={[styles.passIndicator.base, styles.passIndicator[state.state]]}></div>
+      <div style={[styles.passIndicator.base, styles.passIndicator[state]]}></div>
     </div>
   )
 };

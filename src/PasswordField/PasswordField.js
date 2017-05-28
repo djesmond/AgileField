@@ -1,19 +1,25 @@
 import React from 'react';
-import AgileTextField from '../AgileTextField/AgileTextField';
 
+import AgileTextField, {AgileTextFieldPropTypes} from '../AgileTextField/AgileTextField';
 import passswordValidator from '../Utils/Validators/password';
 import PasswordFeedbackElement from './PasswordFeedbackElement';
 
-const PasswordField = (props) => {
-  const { validator, feedbackElement, ...passThroughProps} = props;
+const PasswordField = ({ 
+  validator = passswordValidator, 
+  feedbackElement = PasswordFeedbackElement, 
+  ...passThroughProps
+}) => {
   return (
       <AgileTextField
         type="password"
         validateOnChange={true}
-        validator={validator ? validator : passswordValidator}
-        feedbackElement={feedbackElement ? feedbackElement : PasswordFeedbackElement}
+        validator={validator}
+        feedbackElement={feedbackElement}
         {...passThroughProps}
       />
   )
 }
+PasswordField.propTypes = {
+ ...AgileTextFieldPropTypes
+};
 export default PasswordField;

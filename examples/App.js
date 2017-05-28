@@ -127,6 +127,17 @@ class App extends Component {
             hintText="How much money do you want?"
             disabled={true}
           />
+          <p>One with custom initial state</p>
+          <AgileTextField
+            label="Election"
+            hintText="Enter the name of the president"
+            initialState={{ 
+              state: 'invalid', 
+              value: 'Hillary Clinton', 
+              isValid: false, 
+              feedbackMessage: 'Sorry, the orange won...'
+            }}
+          />
         </div>
         <div className="password">
           <h2>Password</h2>

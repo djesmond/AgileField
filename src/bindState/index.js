@@ -9,14 +9,9 @@ function bindState(WrappedComponent) {
   class Field extends Component {
     constructor(props) {
       super(props);
-      this.state = {
-      state: 'base',
-      value: '',
-      isValid: true,
-      feedbackMessage: '',
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleValidate = this.handleValidate.bind(this);
+      this.state = this.props.initialState;
+      this.handleInputChange = this.handleInputChange.bind(this);
+      this.handleValidate = this.handleValidate.bind(this);
   }
   handleInputChange(event) {
     this.setState({value: event.target.value}, () => {
@@ -65,6 +60,7 @@ Field.propTypes = {
   onValueChange: PropTypes.func,
   style: PropTypes.object,
   disabled: PropTypes.bool,
+  initialState: PropTypes.object
 };
 // Specifies the default values for props:
 Field.defaultProps = {
@@ -77,6 +73,12 @@ Field.defaultProps = {
   onStateChange: (state) => {return state},
   onValueChange: (state) => {return state},
   disabled: false,
+  initialState: {
+      state: 'base',
+      value: '',
+      isValid: true,
+      feedbackMessage: '',
+    }
 };
 
   return Field

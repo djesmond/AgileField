@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import AgileTextField, {AgileTextFieldPropTypes} from '../AgileTextField/AgileTextField';
+import AgileTextField, { AgileTextFieldPropTypes } from '../AgileTextField/AgileTextField';
 import numberValidator from '../Utils/Validators/number';
 
 const NumberField = ({ 
-  minValue = -Infinity, 
-  maxValue = Infinity, 
-  validator = numberValidator(minValue, maxValue), 
-  feedbackElement = null, 
+  minValue = -Infinity,
+  maxValue = Infinity,
+  validator = numberValidator(minValue, maxValue),
+  feedbackElement = null,
   ...passThroughProps
 }) => {
   return (
@@ -25,7 +25,7 @@ const NumberField = ({
 NumberField.propTypes = {
   ...AgileTextFieldPropTypes,
   minValue: PropTypes.number,
-  maxValue: PropTypes.number
+  maxValue: PropTypes.number,
 };
 
 export default NumberField;

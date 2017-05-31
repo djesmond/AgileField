@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const style = {
   fieldFeedback: {
@@ -13,14 +14,21 @@ const style = {
     invalid: {
       color: '#c70000',
     },
-  }
-}
-
-function DefaultFeedbackElement({state, feedbackMessage}) {
-  return(
-    <p style={[style.fieldFeedback.base, style.fieldFeedback[state]]}>
-      {feedbackMessage}
-    </p>
-  )
+  },
 };
+
+const DefaultFeedbackPropTypes = {
+  state: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+};
+
+function DefaultFeedbackElement({ state, message }) {
+  return (
+    <p style={[style.fieldFeedback.base, style.fieldFeedback[state]]}>
+      {message}
+    </p>
+  );
+}
+DefaultFeedbackElement.propTypes = DefaultFeedbackPropTypes;
+
 export default DefaultFeedbackElement;

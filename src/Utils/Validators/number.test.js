@@ -1,12 +1,13 @@
 import numberValidator from './number';
-const values = [10, "foo", "20", 3.14, "3.14", -1, "-42"];
+
+const values = [10, 'foo', '20', 3.14, '3.14', -1, '-42'];
 const returnStateInvalid = {
   isValid: false,
-  state: 'invalid'
+  state: 'invalid',
 };
 const returnStateValid = {
   isValid: true,
-  state: 'valid'
+  state: 'valid',
 };
 describe('Validate Number', () => {
   it('should check if string is a number', () => {

@@ -1,40 +1,41 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import {AgileTextField, PasswordField, NumberField} from '../src/index';
+import { AgileTextField, PasswordField, NumberField } from '../src/index';
 
 function customValidator(input) {
-  if(input.length > 6) {
+  if (input.length > 6) {
     return {
       isValid: false,
-      feedbackMessage: 'Must be less than 6 characters',
-      state: 'invalid'
-    }
-  }else if (input.length === 0) {
-    return {
-      isValid: false,
-      feedbackMessage: 'That\'s too boring!',
-      state: 'invalid'
-    }
-  }
-  else if(input.length > 0 && input.length < 6) {
+      message: 'Must be less than 6 characters',
+      state: 'invalid',
+    };
+  } else if (input.length > 0 && input.length < 6) {
     return {
       isValid: true,
-      feedbackMessage: '',
-      state: 'valid'
-    }
+      message: '',
+      state: 'valid',
+    };
+  } else {
+    return {
+      isValid: false,
+      message: 'That\'s too boring!',
+      state: 'invalid',
+    };
   }
 }
+
 const customStyle = {
   fieldHintText: {
-    color: '#00bf13'
+    color: '#00bf13',
   },
   fieldInput: {
     base: {
-      color: '#df01c9'
-    }
-  }
-}
+      color: '#df01c9',
+    },
+  },
+};
+
 const CustomFeedbackStyle = {
   fieldFeedback: {
     base: {
@@ -48,24 +49,25 @@ const CustomFeedbackStyle = {
     invalid: {
       color: '#c70000',
     },
-  }
-}
+  },
+};
+
 function CustomFeedbackElement(state) {
   return (
-    <p style={[CustomFeedbackStyle.fieldFeedback.base, CustomFeedbackStyle.fieldFeedback[state.state]]}> 
-      Message is: {state.feedbackMessage}
+    <p style={[CustomFeedbackStyle.fieldFeedback.base, CustomFeedbackStyle.fieldFeedback[state.state]]} >
+      Message is: {state.message}
     </p>
   );
-};
+}
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = { value: '' };
     this.handleValueChange = this.handleValueChange.bind(this);
   }
   handleValueChange(state) {
-    this.setState({value: state.value});
+    this.setState({ value: state.value });
   }
   render() {
     return (
@@ -85,19 +87,19 @@ class App extends Component {
           <p>Marked as optional</p>
           <AgileTextField
             label="Location"
-            optional={true}
+            optional
           />
           <p>One with validation</p>
           <AgileTextField
             label="Name"
             hintText="Enter your full name"
-            validateInput={true}
+            validateInput
           />
           <p>One with custom validation</p>
           <AgileTextField
             label="Text"
             hintText="Explain your life with less than 6 characters"
-            validateInput={true}
+            validateInput
             validator={customValidator}
           />
           <p>One with validation and value return when value changes</p>
@@ -105,7 +107,7 @@ class App extends Component {
           <AgileTextField
             label="Name"
             hintText="Enter your full name"
-            validateInput={true}
+            validateInput
             onValueChange={this.handleValueChange}
           />
           <p>One with custom style</p>
@@ -118,24 +120,24 @@ class App extends Component {
           <AgileTextField
             label="Just a label"
             hintText="Hello"
-            validateInput={true}
+            validateInput
             feedbackElement={CustomFeedbackElement}
           />
           <p>Disabled</p>
           <AgileTextField
             label="Add to account"
             hintText="How much money do you want?"
-            disabled={true}
+            disabled
           />
           <p>One with custom initial state</p>
           <AgileTextField
             label="Election"
             hintText="Enter the name of the president"
-            initialState={{ 
-              state: 'invalid', 
-              value: 'Hillary Clinton', 
-              isValid: false, 
-              feedbackMessage: 'Sorry, the orange won...'
+            initialState={{
+              state: 'invalid',
+              value: 'Hillary Clinton',
+              isValid: false,
+              message: 'Sorry, the orange won...',
             }}
           />
         </div>

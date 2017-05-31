@@ -1,15 +1,15 @@
 export default function (input) {
-  if(input.length > 0) {
+  if (input.length > 0) {
     return {
       isValid: true,
-      feedbackMessage: '',
+      message: '',
       state: 'valid',
-    }
-  }else if (input.length === 0) {
+    };
+  } else {
     return {
       isValid: false,
-      feedbackMessage: 'Empty string not allowed',
+      message: 'Empty string not allowed',
       state: 'invalid',
-    }
+    };
   }
 }

@@ -7,6 +7,8 @@ module.exports = {
         "prettier",
     ],
     rules: {
-         "react/jsx-filename-extension": [1, { "extensions": [".js"] }]
+         "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+         "max-len": [1, 120, 2, {ignoreComments: true}],
+         "no-else-return": 0,
     }
 };

@@ -11,11 +11,11 @@ const returnStateValid = {
 
 describe('Validating default validator', () => {
   it('The input is an empty string', () => {
-    const result = defaultValidator('');
+    const result = defaultValidator({ value: '' });
     expect(result).toMatchObject(returnStateInvalid);
   });
   it('The input is atleast 1 character', () => {
-    const result = defaultValidator('a');
+    const result = defaultValidator({ value: 'a' });
     expect(result).toMatchObject(returnStateValid);
   });
 });

@@ -1,17 +1,17 @@
-export default function (input) {
-  if (input.length >= 4 && input.length < 8) {
+export default function (state) {
+  if (state.value.length >= 4 && state.value.length < 8) {
     return {
       isValid: true,
       message: 'Weak',
       state: 'weak',
     };
-  } else if (input.length >= 8 && input.length < 16) {
+  } else if (state.value.length >= 8 && state.value.length < 16) {
     return {
       isValid: true,
       message: 'Passable',
       state: 'passable',
     };
-  } else if (input.length >= 16) {
+  } else if (state.value.length >= 16) {
     return {
       isValid: true,
       message: 'Strong',

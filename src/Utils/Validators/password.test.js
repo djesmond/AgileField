@@ -11,11 +11,11 @@ const returnStateStrong = {
 
 describe('Validating password input', () => {
   it('The password isnt long enough', () => {
-    const result = passwordValidator('');
+    const result = passwordValidator({ value: '' });
     expect(result).toMatchObject(returnStateBase);
   });
   it('The password is very long enough', () => {
-    const result = passwordValidator('aaaaaaaaaaaaaaaa');
+    const result = passwordValidator({ value: 'aaaaaaaaaaaaaaaa' });
     expect(result).toMatchObject(returnStateStrong);
   });
 });

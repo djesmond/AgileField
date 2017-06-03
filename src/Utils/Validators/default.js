@@ -1,5 +1,5 @@
-export default function (input) {
-  if (input.length > 0) {
+export default function (state) {
+  if (state.value.length > 0) {
     return {
       isValid: true,
       message: '',

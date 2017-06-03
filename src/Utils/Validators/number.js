@@ -8,14 +8,14 @@ export default function (min, max) {
   // To allow us to parse addtional parameters to our validator
   // This is done with closures
   // validator(input) has access to min and max
-  function validator(input) {
+  function validator(state) {
     // The input will always be a string
     // So we convert it with '+'
     // If this fails then isNumber will return false
-    const inputAsNumber = +input;
+    const inputAsNumber = +state.value;
     const result = isNumber(inputAsNumber);
     // Check if input is empty string
-    if (input.length === 0) {
+    if (state.value.length === 0) {
       return {
         isValid: false,
         message: 'Cannot be left blank',

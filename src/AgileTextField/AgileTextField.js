@@ -128,6 +128,5 @@ AgileTextField.defaultProps = {
   feedbackElement: null,
 };
 
-
 export { AgileTextFieldPropTypes };
-export default bindState(Radium(AgileTextField));
+export default bindState()(Radium(AgileTextField));

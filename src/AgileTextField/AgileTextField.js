@@ -111,8 +111,8 @@ const AgileTextField = (props) => {
         onBlur={props.validateInput && props.handleValidate}
         disabled={props.disabled}
       />
-      {props.feedbackElement ?
-        (props.feedbackElement(props.state)) : DefaultFeedbackElement(props.state)
+      {props.feedbackElement &&
+        (props.feedbackElement(props.state))
       }
     </div>
   );
@@ -125,7 +125,7 @@ AgileTextField.defaultProps = {
   hintText: '',
   style: null,
   disabled: false,
-  feedbackElement: null,
+  feedbackElement: DefaultFeedbackElement,
 };
 
 export { AgileTextFieldPropTypes };

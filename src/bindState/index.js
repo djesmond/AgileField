@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import _ from 'lodash/object';
 
 import defaultValidator from '../Utils/Validators/default';
 
@@ -62,18 +61,31 @@ function bindState(fieldProps = {}) {
       }
 
       render() {
+        // Dont pass down used props to child
+        const {
+          validator,
+          validateInput,
+          validateOnChange,
+          setStateUpdater,
+          onStateChange,
+          onValueChange,
+          initialState,
+          ...passThroughProps
+        } = this.props;
         return (
           <WrappedComponent
             state={this.state}
             onChange={this.handleInputChange}
             handleValidate={this.handleValidate}
-            {...this.props}
+            {...passThroughProps}
           />
         );
       }
     }
     Field.propTypes = FieldPropTypes;
-    Field.defaultProps = FieldDefaultProps;
+    // Merge the props provided with the default props
+    // This allows them to be overwritten by the user
+    Field.defaultProps = { ...FieldDefaultProps, ...fieldProps };
     // Set the display name
     Field.displayName = `Field(${getDisplayName(WrappedComponent)})`;
     return Field;

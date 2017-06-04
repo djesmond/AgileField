@@ -3,7 +3,7 @@ import Radium from 'radium';
 import _ from 'lodash/object';
 import PropTypes from 'prop-types';
 
-import bindState, { FieldPropTypes } from '../bindState';
+import bindState, { FieldPropTypes } from '../../bindState';
 import DefaultFeedbackElement from './DefaultFeedbackElement';
 
 

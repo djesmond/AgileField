@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import AgileTextField, { AgileTextFieldPropTypes } from '../AgileTextField/AgileTextField';
-import numberValidator from '../Utils/Validators/number';
+import numberValidator from '../../Utils/Validators/number';
 
 const NumberField = ({
   minValue,

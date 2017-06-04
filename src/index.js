@@ -1,7 +1,11 @@
-import AgileTextField from './AgileTextField';
-import PasswordField from './PasswordField';
-import NumberField from './NumberField';
+import AgileTextField from './components/AgileTextField/AgileTextField';
+import PasswordField from './components/PasswordField/PasswordField';
+import NumberField from './components/NumberField/NumberField';
+import Checkbox from './components/CheckboxField/CheckboxField';
 
-export { AgileTextField };
-export { PasswordField };
-export { NumberField };
+export {
+  AgileTextField,
+  PasswordField,
+  NumberField,
+  Checkbox,
+};

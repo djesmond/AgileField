@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { AgileTextField, PasswordField, NumberField } from '../src/index';
+import { AgileTextField, PasswordField, NumberField, Checkbox } from '../src/index';
 
 function customValidator(input) {
   if (input.length > 6) {
@@ -162,6 +162,11 @@ class App extends Component {
             minValue={0}
             maxValue={10}
           />
+        </div>
+        <div className="checkbox">
+          <h2>Checkbox</h2>
+          <p>Simple checkbox</p>
+          <Checkbox />
         </div>
       </div>
     );

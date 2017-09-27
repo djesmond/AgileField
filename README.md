@@ -2,6 +2,8 @@
 Simple controlled inputs for react.
 AgileFields is an easy way to separate the presentational(stateless) component from the stateful input component.
 
+I no longer work on this project. Consider using [formik](https://github.com/jaredpalmer/formik).
+
 # Usage
 AgileField allows any component to be wrapped with a stateful component to handle [controlled](https://facebook.github.io/react/docs/forms.html#controlled-components) React inputs. 
 
